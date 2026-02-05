@@ -1,0 +1,9 @@
+build/*
+
+# Vim swap/backup files
+*.swp
+*.swo
+*.swn
+*~
+.*.sw?
+
