@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/ijp/dond/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+$(OBJ_DIR)/%.o	/home/ijp/dond/makefile	/^$(OBJ_DIR)\/%.o: $(SRC_DIR)\/%.c$/;"	t
+$(TARGET)	/home/ijp/dond/makefile	/^$(TARGET): $(OBJ)$/;"	t
+BUF_SIZE	/home/ijp/dond/src/main.c	/^#define BUF_SIZE /;"	d	file:
+CC	/home/ijp/dond/makefile	/^CC = gcc$/;"	m
+CFLAGS	/home/ijp/dond/makefile	/^CFLAGS = -Wall -Wextra -O2$/;"	m
+LOG_PATH	/home/ijp/dond/src/main.c	/^#define LOG_PATH /;"	d	file:
+OBJ	/home/ijp/dond/makefile	/^OBJ = $(patsubst $(SRC_DIR)\/%.c,$(OBJ_DIR)\/%.o,$(SRC))$/;"	m
+OBJ_DIR	/home/ijp/dond/makefile	/^OBJ_DIR = $(OUT_DIR)\/obj$/;"	m
+OUT_DIR	/home/ijp/dond/makefile	/^OUT_DIR = build$/;"	m
+QUEUE_PATH	/home/ijp/dond/src/main.c	/^#define QUEUE_PATH /;"	d	file:
+ROOT	/home/ijp/dond/makefile	/^ROOT = $(notdir $(CURDIR))$/;"	m
+SRC	/home/ijp/dond/makefile	/^SRC = $(wildcard $(SRC_DIR)\/*.c)$/;"	m
+SRC_DIR	/home/ijp/dond/makefile	/^SRC_DIR = src$/;"	m
+TARGET	/home/ijp/dond/makefile	/^TARGET = $(OUT_DIR)\/$(ROOT)$/;"	m
+_GNU_SOURCE	/home/ijp/dond/src/main.c	/^#define _GNU_SOURCE$/;"	d	file:
+clean	/home/ijp/dond/makefile	/^clean:$/;"	t
+compile	/home/ijp/dond/makefile	/^compile: $(OBJ_DIR)\/%.o$/;"	t
+help	/home/ijp/dond/makefile	/^help:$/;"	t
+link	/home/ijp/dond/makefile	/^link: $(TARGET)$/;"	t
+main	/home/ijp/dond/src/main.c	/^int main(void) {$/;"	f	typeref:typename:int
+run	/home/ijp/dond/makefile	/^run: $(TARGET)$/;"	t
