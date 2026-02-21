@@ -1,6 +1,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 #include "countof.h"
 #include "inbox.h"
@@ -12,9 +13,8 @@ static bool fifo_does_exist(struct fifo_watcher *self) {
 }
 /// obtains a file descriptor for fifo at path.
 static bool fifo_setup(struct fifo_watcher *self) {
-  const char *path = self->fifo_path;
-  if (fifo_does_exist(self) || (mkfifo(path, 0666) == 0))
-    return ((self->fifo_fd = open(path, O_RDONLY | O_NONBLOCK)) >= 0);
+  if (fifo_does_exist(self) || (mkfifo(self->fifo_path, 0666) == 0))
+    return (self->fifo_fd = open(self->fifo_path, O_RDONLY | O_NONBLOCK)) >= 0;
   else
     return false;
 }
@@ -29,6 +29,32 @@ static bool epoll_setup(struct fifo_watcher *self) {
                       &self->trigger) >= 0);
   }
 }
+static bool fifo_read_line(struct fifo_watcher *self) {
+    printf("test");
+ (void)self;
+  //char buf[1024];
+  //ssize_t n;
+
+
+  return true;
+  // while((n = read(self->fifo_fd, buf, sizeof(buf))) > 0) {
+  //   for (ssize_t i = 0; i < n; i++) {
+  //     putchar(buf[i]);
+  //     if (buf[i] == '\n') {
+  //       fflush(stdout);
+  //       return true;
+  //     }
+  //   }
+  // }
+  // if (n == 0) {
+  //     fflush(stdout);
+  //     close(self->fifo_fd);
+  //     return fifo_setup(self);
+  // }
+  // return false;
+}
+
+
 /// creates a new fifo watcher on the given path
 struct fifo_watcher new_watcher(const char *fifo_path) {
   struct fifo_watcher self = { 
@@ -39,12 +65,10 @@ struct fifo_watcher new_watcher(const char *fifo_path) {
   self.all_ok &= epoll_setup(&self);
   return self;
 }
-int watch_fifo(struct fifo_watcher *self) {
+int watch_fifo_line(struct fifo_watcher *self) {
   while(self->all_ok) {
-    printf("loop entered\t");
     self->all_ok &= (epoll_wait(self->epoll_fd, &self->trigger, 1, -1) == 1);
-    printf("event detected\n");
-
+    self->all_ok &= fifo_read_line(self);
   }
   return -1;
 }
