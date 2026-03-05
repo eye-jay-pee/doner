@@ -11,22 +11,41 @@
 !_TAG_PROGRAM_VERSION	5.9.0	//
 $(OBJ_DIR)/%.o	/home/ijp/dond/makefile	/^$(OBJ_DIR)\/%.o: $(SRC_DIR)\/%.c$/;"	t
 $(TARGET)	/home/ijp/dond/makefile	/^$(TARGET): $(OBJ)$/;"	t
-BUF_SIZE	/home/ijp/dond/src/main.c	/^#define BUF_SIZE /;"	d	file:
+BIN	/home/ijp/dond/makefile	/^BIN     = build\/app$/;"	m
 CC	/home/ijp/dond/makefile	/^CC = gcc$/;"	m
-CFLAGS	/home/ijp/dond/makefile	/^CFLAGS = -Wall -Wextra -O2$/;"	m
-LOG_PATH	/home/ijp/dond/src/main.c	/^#define LOG_PATH /;"	d	file:
-OBJ	/home/ijp/dond/makefile	/^OBJ = $(patsubst $(SRC_DIR)\/%.c,$(OBJ_DIR)\/%.o,$(SRC))$/;"	m
+CFLAGS	/home/ijp/dond/makefile	/^CFLAGS = -Wall -Wextra -O2 -Isrc -Iinclude$/;"	m
+DEFAULT_BUFFER_SIZE	/home/ijp/dond/src/watcher.h	/^#define DEFAULT_BUFFER_SIZE /;"	d
+OBJ	/home/ijp/dond/makefile	/^OBJ := $(patsubst $(SRC_DIR)\/%.c,$(OBJ_DIR)\/%.o,$(SRC))$/;"	m
 OBJ_DIR	/home/ijp/dond/makefile	/^OBJ_DIR = $(OUT_DIR)\/obj$/;"	m
 OUT_DIR	/home/ijp/dond/makefile	/^OUT_DIR = build$/;"	m
-QUEUE_PATH	/home/ijp/dond/src/main.c	/^#define QUEUE_PATH /;"	d	file:
 ROOT	/home/ijp/dond/makefile	/^ROOT = $(notdir $(CURDIR))$/;"	m
-SRC	/home/ijp/dond/makefile	/^SRC = $(wildcard $(SRC_DIR)\/*.c)$/;"	m
+SRC	/home/ijp/dond/makefile	/^SRC := $(shell find $(SRC_DIR) -type f -name '*.c')$/;"	m
 SRC_DIR	/home/ijp/dond/makefile	/^SRC_DIR = src$/;"	m
 TARGET	/home/ijp/dond/makefile	/^TARGET = $(OUT_DIR)\/$(ROOT)$/;"	m
-_GNU_SOURCE	/home/ijp/dond/src/main.c	/^#define _GNU_SOURCE$/;"	d	file:
+WATCHER_H	/home/ijp/dond/src/watcher.h	/^#define WATCHER_H$/;"	d
+all_ok	/home/ijp/dond/src/watcher.h	/^  bool all_ok;$/;"	m	struct:watcher	typeref:typename:bool
+buf	/home/ijp/dond/src/watcher.h	/^  char * buf;$/;"	m	struct:watcher	typeref:typename:char *
+buf_n	/home/ijp/dond/src/watcher.h	/^  size_t buf_n;$/;"	m	struct:watcher	typeref:typename:size_t
 clean	/home/ijp/dond/makefile	/^clean:$/;"	t
-compile	/home/ijp/dond/makefile	/^compile: $(OBJ_DIR)\/%.o$/;"	t
+countof	/home/ijp/dond/src/countof.h	/^#define countof(/;"	d
+create_epoll	/home/ijp/dond/src/watcher/new.c	/^static bool create_epoll(struct watcher *self) {$/;"	f	typeref:typename:bool	file:
+create_fifo	/home/ijp/dond/src/watcher/new.c	/^static bool create_fifo(struct watcher *self, const char *path) {$/;"	f	typeref:typename:bool	file:
+epoll_fd	/home/ijp/dond/src/watcher.h	/^  int epoll_fd;$/;"	m	struct:watcher	typeref:typename:int
 help	/home/ijp/dond/makefile	/^help:$/;"	t
 link	/home/ijp/dond/makefile	/^link: $(TARGET)$/;"	t
+list	/home/ijp/dond/makefile	/^list:$/;"	t
 main	/home/ijp/dond/src/main.c	/^int main(void) {$/;"	f	typeref:typename:int
+new_watcher	/home/ijp/dond/src/watcher/new.c	/^struct watcher new_watcher(const char *path) {$/;"	f	typeref:struct:watcher
+open_fifo	/home/ijp/dond/src/watcher/new.c	/^static bool open_fifo(struct watcher *self) {$/;"	f	typeref:typename:bool	file:
+respond	/home/ijp/dond/src/watcher/watch.c	/^static bool respond(struct watcher *self) {$/;"	f	typeref:typename:bool	file:
+response_fp	/home/ijp/dond/src/watcher.h	/^  void (*response_fp)(void);$/;"	m	struct:watcher	typeref:typename:void (*)(void)
 run	/home/ijp/dond/makefile	/^run: $(TARGET)$/;"	t
+setup_buffer	/home/ijp/dond/src/watcher/new.c	/^static bool setup_buffer(struct watcher *self, size_t n) {$/;"	f	typeref:typename:bool	file:
+start_epoll	/home/ijp/dond/src/watcher/new.c	/^static bool start_epoll(struct watcher *self) {$/;"	f	typeref:typename:bool	file:
+target_fd	/home/ijp/dond/src/watcher.h	/^  int target_fd;$/;"	m	struct:watcher	typeref:typename:int
+target_path	/home/ijp/dond/src/watcher.h	/^  const char *target_path;$/;"	m	struct:watcher	typeref:typename:const char *
+trigger	/home/ijp/dond/src/watcher.h	/^  struct epoll_event trigger;$/;"	m	struct:watcher	typeref:struct:epoll_event
+wait_for_epoll	/home/ijp/dond/src/watcher/watch.c	/^static bool wait_for_epoll(struct watcher *self) {$/;"	f	typeref:typename:bool	file:
+watch	/home/ijp/dond/src/watcher/watch.c	/^void watch(struct watcher *self) {$/;"	f	typeref:typename:void
+watcher	/home/ijp/dond/src/watcher.h	/^struct watcher {$/;"	s
+with_buf_size	/home/ijp/dond/src/watcher/new.c	/^struct watcher with_buf_size(struct watcher self, size_t size) {$/;"	f	typeref:struct:watcher
